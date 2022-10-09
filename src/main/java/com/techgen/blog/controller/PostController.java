@@ -6,6 +6,7 @@ import com.techgen.blog.service.PostService;
 import com.techgen.blog.utils.AppConstants;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -21,6 +22,7 @@ public class PostController {
         this.postService = postService;
     }
 
+    @PreAuthorize("hasRole('ADMIN')") // Role based authorization i.e. only user with ADMIN role can access
     @PostMapping("")
     public ResponseEntity<PostDTO> createPost(@Valid @RequestBody PostDTO postDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(postService.createPost(postDTO));
@@ -39,11 +41,13 @@ public class PostController {
         return ResponseEntity.ok().body(postService.getPostById(id));
     }
 
+    @PreAuthorize("hasRole('ADMIN')") // Role based authorization i.e. only user with ADMIN role can access
     @PutMapping("/{post-id}")
     public ResponseEntity<PostDTO> updatePost(@Valid @PathVariable(value = "post-id") long id, @RequestBody PostDTO postDTO) {
         return ResponseEntity.status(HttpStatus.OK).body(postService.updatePost(id, postDTO));
     }
 
+    @PreAuthorize("hasRole('ADMIN')") // Role based authorization i.e. only user with ADMIN role can access
     @DeleteMapping("/{post-id}")
     public ResponseEntity<String> deletePostById(@PathVariable(value = "post-id") long id) {
         postService.deletePostById(id);
