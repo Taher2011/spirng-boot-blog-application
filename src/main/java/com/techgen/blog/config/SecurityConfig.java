@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.GET, "/v1/api/**").permitAll() // Permit All GET requests with uri starting /v1/api/**
 			 	.antMatchers(HttpMethod.GET, "/api/version/**").permitAll() // Permit All GET requests with uri starting /api/version/**
 				.antMatchers("/v1/api/auth/**").permitAll() // Permit All requests with uri starting /v1/api/auth/**
-				.antMatchers("/v3/api-docs/**").permitAll()
+				.antMatchers("/v2/api-docs/**").permitAll()
 				.antMatchers("/swagger-ui/**").permitAll()
 				.antMatchers("/swagger-resources/**").permitAll()
 				.antMatchers("/swagger-ui.html").permitAll()
