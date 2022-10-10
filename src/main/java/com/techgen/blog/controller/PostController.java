@@ -21,7 +21,7 @@ import com.techgen.blog.service.PostService;
 import com.techgen.blog.utils.AppConstants;
 
 @RestController
-@RequestMapping("/api/posts")
+@RequestMapping("/v1/api/posts")
 public class PostController {
 
 	private final PostService postService;

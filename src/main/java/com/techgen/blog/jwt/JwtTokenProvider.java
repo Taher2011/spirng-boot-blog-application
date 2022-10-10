@@ -24,13 +24,10 @@ public class JwtTokenProvider {
 	@Value("${app.jwt-secret}")
 	private String jwtSecret;
 	
-	@Value("${app.jwt-expiration-milliseconds}")
-	private int jwtExpirationInMs;
-
 	// generate jwt token
 	public String generateJWTToken(Authentication authentication) {
 		String username = authentication.getName();
-		Date expireDate = Date.from(ZonedDateTime.now().plusMinutes(2).toInstant());
+		Date expireDate = Date.from(ZonedDateTime.now().plusMinutes(2).toInstant()); // token will expire in 2 min
 
 		String token = Jwts.builder().setSubject(username).setIssuedAt(new Date()).setExpiration(expireDate)
 				.signWith(SignatureAlgorithm.HS512, jwtSecret).compact();

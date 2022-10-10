@@ -25,7 +25,7 @@ import com.techgen.blog.repository.RoleRepository;
 import com.techgen.blog.repository.UserRepository;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/v1/api/auth")
 public class AuthController {
 
 	@Autowired
