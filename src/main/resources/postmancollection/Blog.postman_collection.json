@@ -10,6 +10,202 @@
 			"name": "Post",
 			"item": [
 				{
+					"name": "Versioning Using URI",
+					"item": [
+						{
+							"name": "Get Post By Id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/version/posts/v2/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"version",
+										"posts",
+										"v2",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get PostTag By Id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/version/posts/2?version=2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"version",
+										"posts",
+										"2"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Versioning Using Param",
+					"item": [
+						{
+							"name": "Get Post By Id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/version/posts/2?version=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"version",
+										"posts",
+										"2"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get PostTag By Id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/api/version/posts/2?version=2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"version",
+										"posts",
+										"2"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Versioning Using Header",
+					"item": [
+						{
+							"name": "Get Post By Id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "API-VERSION",
+										"value": "1",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/version/posts/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"version",
+										"posts",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get PostTag By Id",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "API-VERSION",
+										"value": "2",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8080/api/version/posts/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"version",
+										"posts",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Token",
 					"request": {
 						"auth": {
@@ -19,7 +215,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"usernameOrEmail\" :\"taher\",\r\n    \"password\":\"1234\"\r\n}",
+							"raw": "{\r\n    \"usernameOrEmail\" :\"admin\",\r\n    \"password\":\"1234\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -27,13 +223,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/auth/token",
+							"raw": "http://localhost:8080/v1/api/auth/token",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"auth",
 								"token"
@@ -83,7 +280,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0YWhlckBnbWFpbC5jb20iLCJpYXQiOjE2NjUzNzc3MzcsImV4cCI6MTY2NTM3Nzg1N30.Kp9L47sAvghwDzmqVFjr2iZhkzCtAP1o13KIGm4zUcZDgONfArUs_mGArG-PjIiY5QVyEvDGxBohx_TVF0961w",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2NjUzODY3MTEsImV4cCI6MTY2NTM4NjgzMX0.wPVo_2JJiH1qb3_2Gg49rW6_d7ksPUVpCSXxIhtfy6NZja5Oe9fchMDiLW1DH3qmHGTt8_JF4xG85TuegUCiuQ",
 									"type": "string"
 								}
 							]
@@ -107,13 +304,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/posts",
+							"raw": "http://localhost:8080/v1/api/posts",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"posts"
 							]
@@ -130,13 +328,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/posts?page-no=0&page-size=6&sort-by=id&sort-dir=asc",
+							"raw": "http://localhost:8080/v1/api/posts?page-no=0&page-size=6&sort-by=id&sort-dir=asc",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"posts"
 							],
@@ -171,16 +370,24 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/posts/2",
+							"raw": "http://localhost:8080/v1/api/posts/2",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"posts",
 								"2"
+							],
+							"query": [
+								{
+									"key": "version",
+									"value": "1",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -211,13 +418,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/posts/7",
+							"raw": "http://localhost:8080/v1/api/posts/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"posts",
 								"7"
@@ -242,13 +450,14 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/posts/4",
+							"raw": "http://localhost:8080/v1/api/posts/4",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"posts",
 								"4"
@@ -265,6 +474,16 @@
 				{
 					"name": "Create Comment",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2NjUzODY5ODgsImV4cCI6MTY2NTM4NzEwOH0.fK8LM0fa0fIXxhijEd34rhV-Mqi69LqwTv90sDkki5_7BOo92MaR2DQUfdcjs0OCijSLZoObt7BWSiRgC_sQag",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -277,13 +496,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/posts/1/comments",
+							"raw": "http://localhost:8080/v1/api/posts/1/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"posts",
 								"1",
@@ -299,13 +519,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/posts/4/comments",
+							"raw": "http://localhost:8080/v1/api/posts/4/comments",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"posts",
 								"4",
@@ -321,13 +542,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/posts/2/comments/3",
+							"raw": "http://localhost:8080/v1/api/posts/2/comments/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"posts",
 								"2",
@@ -341,6 +563,16 @@
 				{
 					"name": "Update Comment",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2NjUzODY5ODgsImV4cCI6MTY2NTM4NzEwOH0.fK8LM0fa0fIXxhijEd34rhV-Mqi69LqwTv90sDkki5_7BOo92MaR2DQUfdcjs0OCijSLZoObt7BWSiRgC_sQag",
+									"type": "string"
+								}
+							]
+						},
 						"method": "PUT",
 						"header": [],
 						"body": {
@@ -353,13 +585,14 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/posts/1/comments/3",
+							"raw": "http://localhost:8080/v1/api/posts/1/comments/3",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"posts",
 								"1",
@@ -373,21 +606,57 @@
 				{
 					"name": "Delete Comments By Id",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE2NjUzODY5ODgsImV4cCI6MTY2NTM4NzEwOH0.fK8LM0fa0fIXxhijEd34rhV-Mqi69LqwTv90sDkki5_7BOo92MaR2DQUfdcjs0OCijSLZoObt7BWSiRgC_sQag",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/posts/1/comments/1",
+							"raw": "http://localhost:8080/v1/api/posts/1/comments/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
 							],
 							"port": "8080",
 							"path": [
+								"v1",
 								"api",
 								"posts",
 								"1",
 								"comments",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Swagger",
+			"item": [
+				{
+					"name": "Swagger",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/v2/api-docs",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"v2",
+								"api-docs"
 							]
 						}
 					},
