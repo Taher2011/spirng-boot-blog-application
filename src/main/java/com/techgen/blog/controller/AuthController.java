@@ -2,6 +2,8 @@ package com.techgen.blog.controller;
 
 import java.util.Collections;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,6 +26,7 @@ import com.techgen.blog.model.UserDTO;
 import com.techgen.blog.repository.RoleRepository;
 import com.techgen.blog.repository.UserRepository;
 
+@Api(value = "AuthController exposes token and register user API's")
 @RestController
 @RequestMapping("/v1/api/auth")
 public class AuthController {
@@ -43,6 +46,7 @@ public class AuthController {
 	@Autowired
 	private JwtTokenProvider tokenProvider;
 
+	@ApiOperation(value = "API to provide jwt token")
 	@PostMapping("/token")
 	public ResponseEntity<JWTAuthResponseDTO> authenticateUser(@RequestBody UserDTO userDTO) {
 		Authentication authentication = authenticationManager.authenticate(
@@ -56,6 +60,7 @@ public class AuthController {
 		return ResponseEntity.ok(new JWTAuthResponseDTO(token));
 	}
 
+	@ApiOperation(value = "API to register new user")
 	@PostMapping("/signup")
 	public ResponseEntity<?> registerUser(@RequestBody RegisterUserDTO registerUserDTO) {
 
