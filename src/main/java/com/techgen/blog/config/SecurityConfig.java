@@ -11,7 +11,12 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.techgen.blog.filter.JwtAuthenticationFilter;
@@ -29,9 +34,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private JwtAuthenticationEntryPoint authenticationEntryPoint;
 
+//	@Bean
+//	public JwtAuthenticationFilter jwtAuthenticationFilter() {
+//		return new JwtAuthenticationFilter();
+//	}
+
+//	@Bean
+//	PasswordEncoder passwordEncoder() {
+//		return new BCryptPasswordEncoder();
+//	}
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
-
+	
 	@Autowired
 	private JwtAuthenticationFilter jwtAuthenticationFilter;
 
@@ -55,4 +70,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		return super.authenticationManagerBean();
 	}
 
+//	@Override
+//	@Bean
+//	protected UserDetailsService userDetailsService() {
+//		UserDetails taherUser = User.builder().username("tahery").password(passwordEncoder().encode("1234"))
+//				.roles("USER").build();
+//		UserDetails admin = User.builder().username("adminy").password(passwordEncoder().encode("1234")).roles("ADMIN")
+//				.build();
+//		return new InMemoryUserDetailsManager(taherUser, admin);
+//	}
 }
