@@ -3,6 +3,10 @@ package com.techgen.blog.config;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import com.techgen.blog.filter.JwtAuthenticationFilter;
 
 @Configuration
 public class BeanConfig {
@@ -11,4 +15,15 @@ public class BeanConfig {
     public ModelMapper modelMapper() {
         return new ModelMapper();
     }
+    
+	@Bean
+	PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+	
+	@Bean
+	public JwtAuthenticationFilter jwtAuthenticationFilter() {
+		return new JwtAuthenticationFilter();
+	}
+
 }

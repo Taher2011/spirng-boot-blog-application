@@ -1,12 +1,12 @@
 package com.techgen.blog.entity;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
-@Data
-@NoArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "roles")
 public class Role {
@@ -14,5 +14,8 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
+    @Column(length = 60)
     private String name;
 }
+
