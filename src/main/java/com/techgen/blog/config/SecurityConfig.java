@@ -41,7 +41,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/v1/api/**").permitAll() // Permit All GET requests with uri starting /v1/api/**
 			 	.antMatchers(HttpMethod.GET, "/api/version/**").permitAll() // Permit All GET requests with uri starting /api/version/**
-				.antMatchers("/v1/api/auth/**").permitAll().anyRequest() // Permit All requests with uri starting /v1/api/auth/**
+				.antMatchers("/v1/api/auth/**").permitAll() // Permit All requests with uri starting /v1/api/auth/**
+				.antMatchers("/v3/api-docs/**").permitAll()
+				.antMatchers("/swagger-ui/**").permitAll()
+				.antMatchers("/swagger-resources/**").permitAll()
+				.antMatchers("/swagger-ui.html").permitAll()
+				.antMatchers("/webjars/**").permitAll()
+				.anyRequest() 
 				.authenticated();
 		http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 	}
